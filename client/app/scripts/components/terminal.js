@@ -271,7 +271,9 @@ class Terminal extends React.Component {
     const innerNode = ReactDOM.findDOMNode(this.innerFlex);
     // scrollbar === 16px
     const width = innerNode.clientWidth - (2 * 8) - 16;
-    const height = innerNode.clientHeight - (2 * 8);
+    // #1986 Safari doesn't calculate clientHeight like Chrome.
+    // Use the parent's height and pad the bottom with 50px;
+    const height = innerNode.offsetParent.clientHeight - (2 * 8) - 50;
     const cols = Math.floor(width / this.state.characterWidth);
     const rows = Math.floor(height / this.state.characterHeight);
 

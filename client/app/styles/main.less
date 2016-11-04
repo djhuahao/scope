@@ -992,7 +992,7 @@ h2 {
     // overflow hiddened.
     padding: 10px 0 10px 10px;
     flex: 1;
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   &-animation-wrapper {
@@ -1007,6 +1007,7 @@ h2 {
     height: 100%;
     border: 0px solid #000000;
     color: #f0f0f0;
+    background-color: #000000;
   }
 
   &-header {
@@ -1059,13 +1060,14 @@ h2 {
   &-inner {
     cursor: text;
     font-family: @mono-font;
-    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.93);
     padding: 8px;
     border-radius: 0 0 0 4px;
+    //Fix for 1968. Chrome wasn't respecting this overflow rule, but Safari was.
+    overflow: visible !important;
 
     .terminal {
       background-color: transparent !important;
